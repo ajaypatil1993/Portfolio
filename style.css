@@ -15,12 +15,12 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px 70px; /* Default padding for larger screens */
+  padding: 10px 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #e2d3f4; /* Background color for header */
-  box-shadow: 0 4px 8px rgba(125, 42, 232, 0.3); /* Shadow with color related to #7d2ae8 */
+  background: #e2d3f4;
+  box-shadow: 0 4px 8px rgba(125, 42, 232, 0.3);
   z-index: 100;
 }
 
@@ -31,17 +31,13 @@ header {
   margin-right: 100px;
 }
 
-.logo span {
-  color: #7d2ae8;
-}
-
 /* Navigation Styling */
 .navigation {
   margin-left: -300px;
 }
 
 .navigation a {
-  font-size: 1.3em; /* Default font size for navigation links */
+  font-size: 1.3em;
   color: #555;
   text-decoration: none;
   margin-right: 40px;
@@ -57,7 +53,7 @@ header {
 .btn-talk {
   color: #fff;
   text-decoration: none;
-  padding: 10px 40px; /* Default padding for button */
+  padding: 10px 40px;
   background: #7d2ae8;
   border-radius: 10px;
   border: 2px solid #7d2ae8;
@@ -70,7 +66,20 @@ header {
   background: transparent;
 }
 
-/* Responsive Styles */
+/* Hamburger Menu Styling */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #555;
+  transition: 0.4s;
+}
 
 /* For large screens (above 1200px) */
 @media (min-width: 1200px) {
@@ -104,51 +113,70 @@ header {
   }
 
   .navigation {
-    margin-left: 0; /* Center the navigation */
+    display: none; /* Hide navigation links by default */
+    margin-left: 0;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .navigation a {
-    font-size: 1.2em; /* Slightly smaller font size */
-    margin-right: 30px; /* Reduced spacing between links */
+  .hamburger {
+    display: flex; /* Show hamburger icon */
   }
 
   .btn-talk {
-    padding: 8px 30px; /* Slightly smaller padding */
+    padding: 8px 30px;
   }
 }
 
 /* For small screens (below 768px) */
 @media (max-width: 767px) {
   header {
-    padding: 10px 20px; /* Reduced padding for small screens */
-    flex-direction: column; /* Stack items vertically */
-    align-items: flex-start; /* Align items to the left */
+    padding: 10px 20px;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .logo {
     width: 60px;
-    margin-right: 0; /* Remove right margin */
-    margin-bottom: 10px; /* Add some space below the logo */
+    margin-right: 0;
+    margin-bottom: 10px;
   }
 
   .navigation {
+    display: none; /* Hide navigation links by default */
     margin-left: 0;
-    display: flex;
-    flex-direction: column; /* Stack navigation links vertically */
-    align-items: flex-start; /* Align links to the left */
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .navigation a {
-    font-size: 1.1em; /* Smaller font size */
-    margin-right: 0; /* Remove right margin */
-    margin-bottom: 10px; /* Add space below each link */
+  .hamburger {
+    display: flex; /* Show hamburger icon */
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
   }
 
   .btn-talk {
-    padding: 8px 20px; /* Smaller padding for the button */
-    font-size: 1em; /* Adjust font size */
+    padding: 1px 5px;
+    font-size: 1em;
+    margin: auto;
   }
 }
+
+/* Show navigation links when hamburger is active */
+.navigation.active {
+  display: flex; /* Show the navigation links */
+}
+
 
 /* Home Section Styling */
 .home {
@@ -162,12 +190,10 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 30px 100px; /* Default padding for larger screens */
-  padding-top: calc(
-    100px + 20px
-  ); /* Added padding-top to avoid overlap with navbar */
+  padding-top: calc(100px + 20px); /* Avoid overlap with navbar */
+  flex-direction: row; /* Default layout for larger screens */
 }
 
-/* Content Styling */
 .content {
   max-width: 600px;
   color: #555;
@@ -188,70 +214,6 @@ header {
 
 .content p {
   padding: 10px 0 40px 0;
-}
-
-/* Responsive Styles */
-
-/* For large screens (above 1200px) */
-@media (min-width: 1200px) {
-  .home {
-    padding: 30px 100px;
-    padding-top: calc(
-      100px + 20px
-    ); /* Ensure padding-top is adequate for large screens */
-  }
-
-  .content h2 {
-    font-size: 3em;
-  }
-
-  .content h4 {
-    font-size: 2em;
-  }
-}
-
-/* For medium screens (between 768px and 1200px) */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .home {
-    padding: 20px 50px; /* Reduced padding for medium screens */
-    padding-top: calc(80px + 20px); /* Adjust padding-top for medium screens */
-  }
-
-  .content h2 {
-    font-size: 2.5em; /* Slightly smaller font size */
-  }
-
-  .content h4 {
-    font-size: 1.8em; /* Slightly smaller font size */
-  }
-}
-
-/* For small screens (below 768px) */
-@media (max-width: 767px) {
-  .home {
-    flex-direction: column; /* Stack items vertically */
-    padding: 20px; /* Reduced padding for small screens */
-    padding-top: calc(60px + 20px); /* Adjust padding-top for small screens */
-    justify-content: center; /* Center items vertically */
-    text-align: center; /* Center text content */
-  }
-
-  .content {
-    max-width: 100%; /* Allow content to take full width */
-    margin-bottom: 20px; /* Reduced margin at the bottom */
-  }
-
-  .content h2 {
-    font-size: 2em; /* Smaller font size */
-  }
-
-  .content h4 {
-    font-size: 1.5em; /* Smaller font size */
-  }
-
-  .content p {
-    padding: 10px 0 20px 0; /* Reduced padding for paragraph */
-  }
 }
 
 /* Button Group Styling */
@@ -291,8 +253,8 @@ header {
 
 .social-icons a {
   display: inline-block;
-  width: 60px; /* Increased icon size */
-  height: 60px; /* Increased icon size */
+  width: 60px; /* Icon size */
+  height: 60px; /* Icon size */
   background: #7d2ae8;
   border-radius: 50%;
   margin-right: 22px;
@@ -301,7 +263,7 @@ header {
   border: 1px solid #fff;
   outline: 2px solid #7d2ae8;
   transition: 0.3s;
-  font-size: 2em; /* Increased icon size */
+  font-size: 2em; /* Icon size */
 }
 
 .social-icons a:hover {
@@ -316,7 +278,7 @@ header {
   margin-left: 10px;
   color: #555;
   transition: 0.3s;
-  font-size: 1.5em; /* Increased icon size */
+  font-size: 1.5em; /* Icon size */
 }
 
 .navigation a i:hover {
@@ -344,6 +306,98 @@ header {
   transform: scale(1.05); /* Slightly enlarge the image on hover */
   box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .home {
+    padding: 30px 50px;
+  }
+
+  .content h2 {
+    font-size: 2.5em;
+  }
+
+  .content h4 {
+    font-size: 1.8em;
+  }
+}
+
+@media (max-width: 992px) {
+  .home {
+    padding: 20px 30px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .content {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .home-image {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
+    padding: 20px 20px;
+    padding-top: calc(80px + 20px);
+  }
+
+  .content h2 {
+    font-size: 2em;
+  }
+
+  .content h4 {
+    font-size: 1.5em;
+  }
+
+  .home-image img {
+    width: 70%;
+  }
+
+  .btn-group a {
+    padding: 8px 30px;
+  }
+
+  .btn-group a:nth-child(2) {
+    margin-left: 15px;
+    padding: 8px 25px;
+  }
+}
+
+@media (max-width: 576px) {
+  .home {
+    padding: 15px;
+    padding-top: calc(60px + 15px);
+  }
+
+  .content h2 {
+    font-size: 1.8em;
+  }
+
+  .content h4 {
+    font-size: 1.3em;
+  }
+
+  .social-icons {
+    bottom: 50px;
+  }
+
+  .social-icons a {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.5em;
+    margin-right: 15px;
+  }
+
+  .home-image img {
+    width: 60%;
+  }
+}
+
 
 /* About Section Styling */
 .about {

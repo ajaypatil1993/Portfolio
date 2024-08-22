@@ -22,3 +22,9 @@ function changeText() {
 
 // Change text and color every 4 seconds
 setInterval(changeText, 4000);
+
+// JavaScript to toggle the hamburger menu
+document.querySelector('.hamburger').addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('.navigation').classList.toggle('active');
+});
